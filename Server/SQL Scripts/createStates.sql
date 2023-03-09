@@ -1,0 +1,22 @@
+USE [StudentTracker System]
+GO
+
+/****** Object:  Table [dbo].[States]    Script Date: 3/9/2023 11:25:10 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[States](
+	[Id] [int] NOT NULL,
+	[Name] [nchar](20) NOT NULL,
+	[Abreviation] [char](2) NOT NULL,
+ CONSTRAINT [PK_States] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
