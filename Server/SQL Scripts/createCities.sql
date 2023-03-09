@@ -1,0 +1,22 @@
+USE [StudentTracker System]
+GO
+
+/****** Object:  Table [dbo].[Cities]    Script Date: 3/9/2023 11:24:42 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Cities](
+	[Id] [int] NOT NULL,
+	[Zip] [int] NOT NULL,
+	[Name] [char](20) NULL,
+ CONSTRAINT [PK_Cities] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
