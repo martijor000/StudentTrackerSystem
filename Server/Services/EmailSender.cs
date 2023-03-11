@@ -11,7 +11,7 @@ namespace StudentTrackerSystem.Server.Services
         /// <summary>
         /// SendGridKey should be set in secret manager
         /// </summary>
-        private readonly string SendGridKey = "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";
+        private readonly string SendGridKey = "";//add api key here
 
         public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor,
                            ILogger<EmailSender> logger)
