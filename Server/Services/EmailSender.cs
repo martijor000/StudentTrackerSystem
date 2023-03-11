@@ -8,6 +8,9 @@ namespace StudentTrackerSystem.Server.Services
     public class EmailSender : IEmailSender
     {
         private readonly ILogger _logger;
+        /// <summary>
+        /// SendGridKey should be set in secret manager
+        /// </summary>
         private readonly string SendGridKey = "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";
 
         public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor,
@@ -35,7 +38,7 @@ namespace StudentTrackerSystem.Server.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("it330centralia@gmail.com", "Password Recovery"),
+                From = new EmailAddress("it330centralia@gmail.com", "Action Needed"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
