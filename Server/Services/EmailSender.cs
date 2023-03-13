@@ -15,7 +15,6 @@ namespace StudentTrackerSystem.Server.Services
             Options = optionsAccessor.Value;
             _logger = logger;
         }
-
         public AuthMessageSenderOptions Options { get; } //Set with Secret Manager.
 
         public async Task SendEmailAsync(string toEmail, string subject, string message)
@@ -25,9 +24,7 @@ namespace StudentTrackerSystem.Server.Services
                 throw new Exception("Null SendGridKey");
             }
             await Execute(Options.SendGridKey, subject, message, toEmail);
-            //await Execute(Options.SendGridKey, subject, message, toEmail);
         }
-
         public async Task Execute(string apiKey, string subject, string message, string toEmail)
         {
             var client = new SendGridClient(apiKey);
