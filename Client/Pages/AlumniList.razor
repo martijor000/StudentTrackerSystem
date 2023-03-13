@@ -1,0 +1,49 @@
+﻿@using StudentTrackerSystem.Shared
+@using System.Web
+@inject HttpClient Http
+@page "Pages/AlumniList"
+
+<h3>AlumniList</h3>
+    <table class="table">
+       <thead>
+          <tr>
+             <th>City</th>
+             <th>Zip code</th>
+          </tr>
+       </thead>
+       <tbody>
+        @foreach (var Name in Cities)
+        {
+                  <tr>
+                     <td>@Name</td>
+                     <td>@Zip</td>
+                  </tr>
+        }
+       </tbody>
+    </table>
+
+@{
+
+
+    var db = Database.Open("centraliait.StudentAlumniTracker");
+    var listAgent = "SELECT * FROM Cities";
+
+    List<SelectListItem> agentdropdownlistdata = new List<SelectListItem>();
+    bool isSelected = false;
+    foreach (var item in db.Query(listAgent))
+    {
+        agentdropdownlistdata.Add(new SelectListItem
+                {
+                    Text = item.Zip,
+                    Value = item.Zip.ToString(),
+                    Selected = isSelected
+                });
+
+        agentdropdownlistdata.Add(new SelectListItem
+                {
+                    Text = item.Zip,
+                    Value = item.Zip,
+                    Selected = isSelected
+                });
+    }
+}
