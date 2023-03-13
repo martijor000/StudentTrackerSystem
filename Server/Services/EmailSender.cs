@@ -8,10 +8,6 @@ namespace StudentTrackerSystem.Server.Services
     public class EmailSender : IEmailSender
     {
         private readonly ILogger _logger;
-        /// <summary>
-        /// SendGridKey should be set in secret manager
-        /// </summary>
-        private readonly string SendGridKey = "";//add api key here
 
         public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor,
                            ILogger<EmailSender> logger)
@@ -24,12 +20,11 @@ namespace StudentTrackerSystem.Server.Services
 
         public async Task SendEmailAsync(string toEmail, string subject, string message)
         {
-            if (string.IsNullOrEmpty(SendGridKey))
+            if (string.IsNullOrEmpty(Options.SendGridKey))
             {
                 throw new Exception("Null SendGridKey");
-                //throw new Exception("Null SendGridKey");
             }
-            await Execute(SendGridKey, subject, message, toEmail);
+            await Execute(Options.SendGridKey, subject, message, toEmail);
             //await Execute(Options.SendGridKey, subject, message, toEmail);
         }
 

@@ -1,0 +1,7 @@
+﻿namespace StudentTrackerSystem.Server.Services
+{
+    public class _
+    {
+      SendGridKey = "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";//add api key here
+    }
+}
