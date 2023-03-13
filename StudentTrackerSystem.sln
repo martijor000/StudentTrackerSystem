@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentTrackerSystem.Server", "Server\StudentTrackerSystem.Server.csproj", "{FA15A10F-EC04-4F99-89D9-40851CD6F75A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentTrackerSystem.Server", "Server\StudentTrackerSystem.Server.csproj", "{FA15A10F-EC04-4F99-89D9-40851CD6F75A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentTrackerSystem.Client", "Client\StudentTrackerSystem.Client.csproj", "{76171BAA-4B36-49BB-8CAC-08DE7180B2DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentTrackerSystem.Client", "Client\StudentTrackerSystem.Client.csproj", "{76171BAA-4B36-49BB-8CAC-08DE7180B2DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentTrackerSystem.Shared", "Shared\StudentTrackerSystem.Shared.csproj", "{DEDD5CE5-A73C-4909-A46A-6A5C455B3D11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentTrackerSystem.Shared", "Shared\StudentTrackerSystem.Shared.csproj", "{DEDD5CE5-A73C-4909-A46A-6A5C455B3D11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
