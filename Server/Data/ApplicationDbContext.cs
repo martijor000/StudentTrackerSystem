@@ -6,12 +6,15 @@ using StudentTrackerSystem.Server.Models;
 
 namespace StudentTrackerSystem.Server.Data
 {
-    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
+    public class ApplicationDbContext : ApiAuthorizationDbContext<Account>
     {
         public ApplicationDbContext(
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+
+        public DbSet<Account> Students { get; set; }
+        
     }
 }
