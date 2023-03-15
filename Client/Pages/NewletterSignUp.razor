@@ -1,0 +1,26 @@
+﻿
+@page "/NewsletterSignUpPage"
+
+<div class="form-container">
+    <h1>Sign up for our Newsletter</h1>
+    
+    <div>
+        <form method="post">
+            <div class="form-select-lg">
+                <label>Full Name:</label>
+                <input asp-for="FullName" required />
+            </div>
+            <div class="form-select-lg">
+                <label>Email:</label>
+                <input asp-for="Email" type="email" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Sign up</button>
+        </form>
+    </div>
+</div>
+
+@code {  
+
+    public string FullName { get; set; }
+    public string Email { get; set; }
+}
