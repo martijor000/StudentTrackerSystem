@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Client\StudentTrackerSystem.Client.csproj" />
-    <ProjectReference Include="..\Shared\StudentTrackerSystem.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

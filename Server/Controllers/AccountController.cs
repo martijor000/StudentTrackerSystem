@@ -20,19 +20,19 @@ namespace StudentTrackerSystem.Server.Controllers
             _dbContext = dbContext;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetProfile()
         [HttpPost]
         public async Task<IActionResult> CreateStudent(Account model)
         {
-            var result = await _userManager.CreateAsync(model);
-            if (result.Succeeded)
-            {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest(result.Errors);
-            }
-        }
+            var user = await _userManager.GetUserAsync(User);
 
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
     }
 }
