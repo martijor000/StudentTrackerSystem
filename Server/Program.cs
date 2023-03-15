@@ -2,6 +2,8 @@ using StudentTrackerSystem.Server.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using StudentTrackerSystem.Server.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using StudentTrackerSystem.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +24,9 @@ builder.Services.AddAuthentication()
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 builder.Services.AddAuthorization(options =>
 {
