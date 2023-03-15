@@ -30,7 +30,7 @@ namespace StudentTrackerSystem.Server.Controllers
                 return NotFound();
             }
 
-            return Ok(user); // wrap the IdentityUser instance inside an OkObjectResult
+            return Ok(user);
         }
     }
 }
