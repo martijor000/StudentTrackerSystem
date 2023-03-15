@@ -22,8 +22,6 @@ namespace StudentTrackerSystem.Server.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetProfile()
-        [HttpPost]
-        public async Task<IActionResult> CreateStudent(Account model)
         {
             var user = await _userManager.GetUserAsync(User);
 
@@ -32,7 +30,7 @@ namespace StudentTrackerSystem.Server.Controllers
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(user); // wrap the IdentityUser instance inside an OkObjectResult
         }
     }
 }
