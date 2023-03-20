@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using StudentTrackerSystem.Server.Models;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using StudentTrackerSystem.Server.Services;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,11 +14,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<Account>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddIdentityServer()
-    .AddApiAuthorization<Account, ApplicationDbContext>();
+    .AddApiAuthorization<<IdentityUser, ApplicationDbContext>();
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();
@@ -48,6 +49,26 @@ using (var scope = app.Services.CreateScope())
     {
         var logger = services.GetRequiredService<ILogger<Program>>();
         logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+    string email = "adminaccount@admin.com";
+    string password = "Test1234!";
+
+    if(await userManager.FindByEmailAsync(email) == null)
+    {
+        var user = new IdentityUser();
+        user.UserName = "dannyguerrerostudent@gmail.com";
+        user.Email = "dannyguerrerostudent@gmail.com";
+        user.EmailConfirmed = true;
+
+       // await userManager.CreateAsync(user, password);
+
+        await userManager.AddToRoleAsync(user, "Administrator");
     }
 }
 
