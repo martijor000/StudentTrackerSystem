@@ -8,12 +8,14 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace StudentTrackerSystem.Server.Data
 {
-    public class ApplicationDbContext : ApiAuthorizationDbContext<IdentityUser>
+    public class ApplicationDbContext : ApiAuthorizationDbContext<Accounts>
     {
         public ApplicationDbContext(
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+
+        DbSet<Accounts> accounts { get; set; } 
     }
 }
