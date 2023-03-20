@@ -5,6 +5,6 @@ namespace StudentTrackerSystem.Server.Models
 {
     public class Accounts : IdentityUser
     {
-
+        public bool Deactivate { get; set; }
     }
 }

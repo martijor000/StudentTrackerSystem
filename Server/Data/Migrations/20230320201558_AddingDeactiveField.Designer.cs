@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentTrackerSystem.Server.Data;
 
@@ -11,9 +12,10 @@ using StudentTrackerSystem.Server.Data;
 namespace StudentTrackerSystem.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230320201558_AddingDeactiveField")]
+    partial class AddingDeactiveField
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -312,7 +314,7 @@ namespace StudentTrackerSystem.Server.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Deactivate")
+                    b.Property<bool>("Deactive")
                         .HasColumnType("bit");
 
                     b.Property<string>("Email")
