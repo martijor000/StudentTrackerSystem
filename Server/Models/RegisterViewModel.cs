@@ -2,6 +2,6 @@
 {
     public class RegisterViewModel
     {
-        public Account account { get; set; }
+        public Accounts account { get; set; }
     }
 }

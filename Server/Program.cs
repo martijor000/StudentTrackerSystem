@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using StudentTrackerSystem.Server.Models;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using StudentTrackerSystem.Server.Services;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,11 +14,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<Account>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<Accounts>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddIdentityServer()
-    .AddApiAuthorization<Account, ApplicationDbContext>();
+    .AddApiAuthorization<Accounts, ApplicationDbContext>();
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();

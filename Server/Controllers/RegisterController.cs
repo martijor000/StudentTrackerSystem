@@ -22,16 +22,16 @@ namespace StudentTrackerSystem.Server.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            var model = new Account();
+            var model = new Accounts();
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(Account model)
+        public async Task<IActionResult> Register(Accounts model)
         {
             if (ModelState.IsValid)
             {
-                var userManager = HttpContext.RequestServices.GetService<UserManager<Account>>();
+                var userManager = HttpContext.RequestServices.GetService<UserManager<Accounts>>();
 
                 var user = await userManager.GetUserAsync(User);
 

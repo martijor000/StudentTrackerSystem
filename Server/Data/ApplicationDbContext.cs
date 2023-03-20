@@ -6,7 +6,7 @@ using StudentTrackerSystem.Server.Models;
 
 namespace StudentTrackerSystem.Server.Data
 {
-    public class ApplicationDbContext : ApiAuthorizationDbContext<Account>
+    public class ApplicationDbContext : ApiAuthorizationDbContext<Accounts>
     {
         public ApplicationDbContext(
             DbContextOptions options,
@@ -14,7 +14,7 @@ namespace StudentTrackerSystem.Server.Data
         {
         }
 
-        public DbSet<Account> Students { get; set; }
+        public DbSet<Accounts> Students { get; set; }
         
     }
 }

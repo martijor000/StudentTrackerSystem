@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StudentTrackerSystem.Server.Models
 {
-    public class Account : IdentityUser
+    public class Accounts : IdentityUser
     {
 
     }
