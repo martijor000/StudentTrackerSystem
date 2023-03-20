@@ -14,11 +14,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddIdentityServer()
-    .AddApiAuthorization<Account, ApplicationDbContext>();
+    .AddApiAuthorization<IdentityUser, ApplicationDbContext>();
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();
@@ -38,38 +39,29 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    try
-    {
-        SeedData.CreateRoles(services).Wait();
-    }
-    catch (Exception ex)
-    {
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred while seeding the database.");
-    }
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+//    try
+//    {
+//        SeedData.CreateRoles(services).Wait();
+//    }
+//    catch (Exception ex)
+//    {
+//        var logger = services.GetRequiredService<ILogger<Program>>();
+//        logger.LogError(ex, "An error occurred while seeding the database.");
+//    }
+//}
 
 using (var scope = app.Services.CreateScope())
 {
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-    string email = "adminaccount@admin.com";
-    string password = "Test1234!";
+    var user = await userManager.FindByIdAsync("cbe937e4-30a0-46fd-afbc-d56cf19bd2a0");
+    IdentityResult result = await userManager.AddToRoleAsync(user, "Administrator");
 
-    if(await userManager.FindByEmailAsync(email) == null)
-    {
-        var user = new IdentityUser();
-        user.UserName = "dannyguerrerostudent@gmail.com";
-        user.Email = "dannyguerrerostudent@gmail.com";
-        user.EmailConfirmed = true;
-
-       // await userManager.CreateAsync(user, password);
-
-        await userManager.AddToRoleAsync(user, "Administrator");
-    }
+    var user2 = await userManager.FindByIdAsync("8c30af3b-8715-4d3d-b2f7-1ead6ceada2a");
+    IdentityResult result2 = await userManager.AddToRoleAsync(user2, "Student");
 }
 
 // Configure the HTTP request pipeline.
