@@ -17,8 +17,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-builder.Services.AddIdentityServer()
-    .AddApiAuthorization<<IdentityUser, ApplicationDbContext>();
+var serverid = new IdentityUser();
+builder.Services.AddIdentityServer(serverid, ApplicationDbContext);
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();
