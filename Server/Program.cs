@@ -18,7 +18,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 var serverid = new IdentityUser();
-builder.Services.AddIdentityServer(serverid, ApplicationDbContext);
+builder.Services.AddIdentityServer(serverid);
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();
