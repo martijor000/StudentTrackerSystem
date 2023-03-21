@@ -53,6 +53,7 @@ var app = builder.Build();
 //    }
 //}
 
+// Methods to set the roles of specific users
 using (var scope = app.Services.CreateScope())
 {
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Accounts>>();

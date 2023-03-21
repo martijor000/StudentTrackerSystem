@@ -32,6 +32,15 @@
                 <span class="oi oi-document " aria-hidden="true"></span> News letter
             </NavLink>
         </div>
+@*
+        // Roles not yet available in Client-side *@
+        <AuthorizeView Roles="Administrator">
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/NewsletterSignUpPage">
+                    <span class="oi oi-pencil" aria-hidden="true"></span> Register a new Student/Administrator account
+                </NavLink>
+            </div>
+		</AuthorizeView>
 
     </nav>
 </div>
